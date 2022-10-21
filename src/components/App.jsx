@@ -1,4 +1,4 @@
-import { Routes, Route, NavLink } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { HeaderStyled, NavStyled, Conteiner } from './AppStyled';
 import { Home } from 'Pages/Home';
 import { Movies } from 'Pages/Movies';
