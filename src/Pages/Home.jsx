@@ -29,7 +29,7 @@ export const Home = () => {
       <ul>
         {films.map(({ id, title }) => (
           <li key={id}>
-            <NavLink>{title}</NavLink>
+            <NavLink to={`Movies/${id}`}>{title}</NavLink>
           </li>
         ))}
       </ul>
