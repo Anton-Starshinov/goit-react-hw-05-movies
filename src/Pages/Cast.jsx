@@ -11,8 +11,8 @@ export const Cast = () => {
 
   useEffect(() => {
     async function fetchActorsId() {
+      setLoader(true);
       try {
-        setLoader(true);
         const actorsCast = await fetchMoviesCast(movieId);
         setActors(actorsCast.cast);
       } catch (error) {

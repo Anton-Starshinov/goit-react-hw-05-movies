@@ -11,8 +11,8 @@ export const Reviews = () => {
 
   useEffect(() => {
     async function fetchReviewsId() {
+      setLoader(true);
       try {
-        setLoader(true);
         const reviewsId = await fetchMoviesReviews(movieId);
         setReviews(reviewsId.results);
       } catch (error) {

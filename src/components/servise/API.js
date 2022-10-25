@@ -36,3 +36,11 @@ export async function fetchMoviesReviews(movie_id) {
   const data = await response.data;
   return data;
 }
+// https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
+export async function fethchMoviesQuery(query) {
+  const response = await axios.get(
+    `${BASE_URL}3/search/movie?api_key=${API_KEY}&query=${query}&language=en-US&page=1&include_adult=false`
+  );
+  const data = await response.data;
+  return data;
+}

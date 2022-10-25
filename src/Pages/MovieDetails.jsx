@@ -17,8 +17,8 @@ export const MovieDetails = () => {
 
   useEffect(() => {
     async function fetchMoviesId() {
+      setLoader(true);
       try {
-        setLoader(true);
         const films = await fetchMoviesDetails(movieId);
         setFilmId(films);
       } catch (error) {
@@ -40,11 +40,16 @@ export const MovieDetails = () => {
 
   return (
     <div>
+      {loading && <Loader />}
+      {error && <p>Whoops, something went wrong</p>}
+      <section>
+        <Link to={'/Movies'}>Go back</Link>
+      </section>
       <MovieContainer>
         <div>
           <img src={`${posterURL}${poster_path}`} alt={title} width="300" />
         </div>
-        {loading && <Loader />}
+
         <div>
           <h1>
             {title} ({release_date.slice(0, 4)})
@@ -59,7 +64,6 @@ export const MovieDetails = () => {
             ))}
           </GanresContainer>
         </div>
-        {error && <p>Whoops, something went wrong</p>}
       </MovieContainer>
       <section>
         <h2>Additional Information</h2>
