@@ -1,9 +1,9 @@
 import { fetchMoviesDetails } from 'components/servise/API';
 import { Loader } from 'components/Loader/Loader';
-import { Outlet, useParams } from 'react-router-dom';
+import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import {
   MovieContainer,
   GanresContainer,
@@ -14,6 +14,8 @@ export const MovieDetails = () => {
   const [filmId, setFilmId] = useState(null);
   const [loading, setLoader] = useState(false);
   const [error, setError] = useState(null);
+  const location = useLocation();
+  const link = location.state?.from ?? '/';
 
   useEffect(() => {
     async function fetchMoviesId() {
@@ -43,7 +45,7 @@ export const MovieDetails = () => {
       {loading && <Loader />}
       {error && <p>Whoops, something went wrong</p>}
       <section>
-        <Link to={'/Movies'}>Go back</Link>
+        <NavLink to={link}>Go back</NavLink>
       </section>
       <MovieContainer>
         <div>
@@ -69,10 +71,14 @@ export const MovieDetails = () => {
         <h2>Additional Information</h2>
         <ul>
           <li>
-            <Link to="Cast">Cast</Link>
+            <Link to="Cast" state={{ from: link }}>
+              Cast
+            </Link>
           </li>
           <li>
-            <Link to="Reviews">Reviews</Link>
+            <Link to="Reviews" state={{ from: link }}>
+              Reviews
+            </Link>
           </li>
         </ul>
       </section>

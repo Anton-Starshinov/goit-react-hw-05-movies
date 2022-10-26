@@ -1,6 +1,6 @@
 import { fetchTrendingMovies } from 'components/servise/API';
 import { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
 
 export const Home = () => {

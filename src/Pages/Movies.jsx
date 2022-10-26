@@ -1,4 +1,4 @@
-import { Outlet, useSearchParams } from 'react-router-dom';
+import { Outlet, useLocation, useSearchParams } from 'react-router-dom';
 import { fethchMoviesQuery } from 'components/servise/API';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -13,6 +13,7 @@ export const Movies = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams({});
   const query = searchParams.get('query') ?? '';
+  const location = useLocation();
 
   const [queryFilms, setQueryFilms] = useState([]);
   const [loading, setLoader] = useState(false);
@@ -71,7 +72,9 @@ export const Movies = () => {
           <ul>
             {queryFilms.map(({ id, title }) => (
               <li key={id}>
-                <Link to={`/Movies/${id}`}>{title}</Link>
+                <Link to={`/Movies/${id}`} state={{ from: location }}>
+                  {title}
+                </Link>
               </li>
             ))}
           </ul>
