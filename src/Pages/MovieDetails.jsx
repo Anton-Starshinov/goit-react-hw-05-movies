@@ -1,8 +1,7 @@
 import { fetchMoviesDetails } from 'components/servise/API';
 import { Loader } from 'components/Loader/Loader';
 import { Outlet, useParams, useLocation } from 'react-router-dom';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { useState, useEffect, Suspense } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import {
   MovieContainer,
@@ -88,7 +87,9 @@ export const MovieDetails = () => {
           </li>
         </ul>
       </section>
-      <Outlet />
+      <Suspense fallback={<div>Loading subpage...</div>}>
+        <Outlet />
+      </Suspense>
     </div>
   );
 };
