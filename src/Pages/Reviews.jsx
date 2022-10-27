@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   const [reviews, setReviews] = useState(null);
   const [loading, setLoader] = useState(false);
@@ -47,3 +47,4 @@ export const Reviews = () => {
     </div>
   );
 };
+export default Reviews;

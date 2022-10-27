@@ -38,7 +38,9 @@ export const MovieDetails = () => {
 
   const { poster_path, title, overview, genres, release_date, vote_average } =
     filmId;
-  const posterURL = 'https://image.tmdb.org/t/p/w500';
+  const posterURL = 'https://image.tmdb.org/t/p/w300';
+  const noImg =
+    'https://png.pngtree.com/png-clipart/20190611/original/pngtree-sorry-fail-to-pay-material-free-download-png-image_2082191.jpg';
 
   return (
     <div>
@@ -49,7 +51,11 @@ export const MovieDetails = () => {
       </section>
       <MovieContainer>
         <div>
-          <img src={`${posterURL}${poster_path}`} alt={title} width="300" />
+          {poster_path ? (
+            <img src={`${posterURL}${poster_path}`} alt={title} />
+          ) : (
+            <img src={`${noImg}`} alt={title} width="300" />
+          )}
         </div>
 
         <div>

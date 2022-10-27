@@ -3,11 +3,14 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [actors, setActors] = useState(null);
   const [loading, setLoader] = useState(false);
   const [error, setError] = useState(null);
+  const posterURL = 'https://image.tmdb.org/t/p/w200';
+  const noImg =
+    'https://png.pngtree.com/png-clipart/20190611/original/pngtree-sorry-fail-to-pay-material-free-download-png-image_2082191.jpg';
 
   useEffect(() => {
     async function fetchActorsId() {
@@ -28,8 +31,6 @@ export const Cast = () => {
     return null;
   }
 
-  const posterURL = 'https://image.tmdb.org/t/p/w200';
-
   return (
     <div>
       {loading && <Loader />}
@@ -37,7 +38,11 @@ export const Cast = () => {
       <ul>
         {actors.map(({ id, name, character, profile_path }) => (
           <li key={id}>
-            <img src={`${posterURL}${profile_path}`} alt={name} />
+            {profile_path ? (
+              <img src={`${posterURL}${profile_path}`} alt={name} />
+            ) : (
+              <img src={`${noImg}`} alt={name} width="200" />
+            )}
             <p>{name}</p>
             <p>{character}</p>
           </li>
@@ -46,3 +51,5 @@ export const Cast = () => {
     </div>
   );
 };
+
+export default Cast;

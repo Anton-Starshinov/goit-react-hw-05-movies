@@ -11,7 +11,6 @@ export async function fetchTrendingMovies() {
   return data;
 }
 
-// https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US
 export async function fetchMoviesDetails(movie_id) {
   const response = await axios.get(
     `${BASE_URL}3/movie/${movie_id}?api_key=${API_KEY}&language=en-US`
@@ -20,7 +19,6 @@ export async function fetchMoviesDetails(movie_id) {
   return data;
 }
 
-// https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=<<api_key>>&language=en-US
 export async function fetchMoviesCast(movie_id) {
   const response = await axios.get(
     `${BASE_URL}3/movie/${movie_id}/credits?api_key=${API_KEY}&language=en-US`
@@ -28,7 +26,7 @@ export async function fetchMoviesCast(movie_id) {
   const data = await response.data;
   return data;
 }
-// https://api.themoviedb.org/3/movie/{movie_id}/reviews?api_key=<<api_key>>&language=en-US&page=1
+
 export async function fetchMoviesReviews(movie_id) {
   const response = await axios.get(
     `${BASE_URL}3/movie/${movie_id}/reviews?api_key=${API_KEY}&language=en-US&page=1`
@@ -36,7 +34,7 @@ export async function fetchMoviesReviews(movie_id) {
   const data = await response.data;
   return data;
 }
-// https://api.themoviedb.org/3/search/movie?api_key=<<api_key>>&language=en-US&page=1&include_adult=false
+
 export async function fethchMoviesQuery(query) {
   const response = await axios.get(
     `${BASE_URL}3/search/movie?api_key=${API_KEY}&query=${query}&language=en-US&page=1&include_adult=false`

@@ -1,32 +1,26 @@
+import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
-import { HeaderStyled, NavStyled, Conteiner } from './AppStyled';
 import { Home } from 'Pages/Home';
 import { Movies } from 'Pages/Movies';
 import { NotFound } from 'Pages/NotFound';
 import { MovieDetails } from 'Pages/MovieDetails';
-import { Cast } from 'Pages/Cast';
-import { Reviews } from 'Pages/Reviews';
+import { SharedLayout } from './SharedLayout';
+
+const Cast = lazy(() => import('../Pages/Cast'));
+const Reviews = lazy(() => import('../Pages/Reviews'));
 
 export const App = () => {
   return (
-    <Conteiner>
-      <HeaderStyled>
-        <nav>
-          <NavStyled to="/" end>
-            Home
-          </NavStyled>
-          <NavStyled to="/Movies">Movies</NavStyled>
-        </nav>
-      </HeaderStyled>
-      <Routes>
-        <Route path="/" element={<Home />} />
+    <Routes>
+      <Route path="/" element={<SharedLayout />}>
+        <Route index element={<Home />} />
         <Route path="/Movies" element={<Movies />} />
         <Route path="/Movies/:movieId" element={<MovieDetails />}>
-          <Route path="Cast" element={<Cast />} />
-          <Route path="Reviews" element={<Reviews />} />
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
         </Route>
         <Route path="*" element={<NotFound />} />
-      </Routes>
-    </Conteiner>
+      </Route>
+    </Routes>
   );
 };
