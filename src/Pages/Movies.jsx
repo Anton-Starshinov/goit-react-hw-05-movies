@@ -1,5 +1,5 @@
 import { Outlet, useLocation, useSearchParams } from 'react-router-dom';
-import { fethchMoviesQuery } from 'components/servise/API';
+import { fethchMoviesQuery } from 'servise/API';
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';
@@ -10,10 +10,10 @@ import {
 } from './PagesStyled/MoviesStayled';
 
 export const Movies = () => {
-  const [searchQuery, setSearchQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams({});
   const query = searchParams.get('query') ?? '';
   const location = useLocation();
+  const [searchQuery, setSearchQuery] = useState(query);
 
   const [queryFilms, setQueryFilms] = useState([]);
   const [loading, setLoader] = useState(false);
@@ -31,7 +31,6 @@ export const Movies = () => {
     }
 
     setSearchParams({ query: searchQuery });
-    setSearchQuery('');
   };
 
   useEffect(() => {

@@ -1,4 +1,4 @@
-import { fetchTrendingMovies } from 'components/servise/API';
+import { fetchTrendingMovies } from 'servise/API';
 import { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Loader } from 'components/Loader/Loader';

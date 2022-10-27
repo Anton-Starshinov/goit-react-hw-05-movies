@@ -1,4 +1,4 @@
-import { fetchMoviesDetails } from 'components/servise/API';
+import { fetchMoviesDetails } from 'servise/API';
 import { Loader } from 'components/Loader/Loader';
 import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { useState, useEffect, Suspense } from 'react';
